@@ -1,0 +1,20 @@
+@use '../base' as *;
+// --------------------------------
+
+// (START) Global editor code https://codyhouse.co/ds/globals/spacing
+
+// --------------------------------
+
+@supports(--css: variables) {
+  @include breakpoint(md) {
+    :root {
+      --space-unit:  1.25rem;
+    }
+  }
+}
+
+// --------------------------------
+
+// (END) Global editor code
+
+// --------------------------------
