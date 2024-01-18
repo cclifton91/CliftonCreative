@@ -14215,8 +14215,9 @@ Usage: codyhouse.co/license
   border: 1px solid hsla(var(--color-white-h), var(--color-white-s), var(--color-white-l), 0.1);
   background-color: hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.95);
   display: block;
-  width: 48px;
-  height: 48px;
+  text-align: center;
+  width: 58px;
+  height: 58px;
   color: var(--color-white);
   transition: 0.2s;
 }

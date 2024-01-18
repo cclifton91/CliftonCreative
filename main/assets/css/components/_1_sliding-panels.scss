@@ -24,8 +24,9 @@ $s-panels-projects: 4; // number of projects - edit to change the layout
   background-color: alpha(var(--color-black), 0.95);
   
   display: block;
-  width: 48px; // logo width
-  height: 48px; // logo height
+  text-align:center;
+  width: 58px; // logo width
+  height: 58px; // logo height
 
   color: var(--color-white); // logo color
 
