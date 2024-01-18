@@ -14213,17 +14213,18 @@ Usage: codyhouse.co/license
   left: var(--space-md);
   border-radius: 50%;
   border: 1px solid hsla(var(--color-white-h), var(--color-white-s), var(--color-white-l), 0.1);
-  background-color: hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.95);
+  background-color: hsla(var(--color-primary-dark-h), var(--color-primary-dark-s), var(--color-primary-dark-l), 0.95);
   display: block;
   text-align: center;
-  width: 58px;
-  height: 58px;
+  width: 48px;
+  height: 48px;
   color: var(--color-white);
   transition: 0.2s;
 }
 .s-panels__logo svg {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+  padding-top: 5px;
 }
 
 .s-panels__nav-control {
@@ -14233,7 +14234,7 @@ Usage: codyhouse.co/license
   right: var(--space-md);
   border-radius: 50%;
   border: 1px solid hsla(var(--color-white-h), var(--color-white-s), var(--color-white-l), 0.1);
-  background-color: hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.95);
+  background-color: hsla(var(--color-primary-dark-h), var(--color-primary-dark-s), var(--color-primary-dark-l), 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
