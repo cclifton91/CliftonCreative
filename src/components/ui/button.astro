@@ -1,0 +1,35 @@
+---
+//Props
+const { label, href, type = "button", variant = "primary", onClick } = Astro.props;
+
+//Variants
+function variantClasses(variant) {
+	switch (variant) {
+		case "primary":
+			return "bg-primary text-white hover:bg-yellow-600";
+		case "secondary":
+			return "bg-secondary text-white hover:bg-slate-800";
+		case "outline":
+			return "border border-primary text-primary hover:bg-primary hover:text-white";
+		default:
+			return "";
+	}
+}
+---
+
+{
+	href ? (
+		<a href={href} class={`btn ${variantClasses(variant)}`}>
+			{label}
+		</a>
+	) : (
+		<button type={type} class={`btn ${variantClasses(variant)}`} onclick={onClick}>
+			{label}
+		</button>
+	)
+}
+
+<style>
+	.btn {
+	}
+</style>

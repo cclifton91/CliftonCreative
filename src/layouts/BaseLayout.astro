@@ -1,0 +1,15 @@
+---
+//imports
+import BaseHead from "./BaseHead.astro";
+import Nav from "@/components/Nav.astro";
+---
+
+<html lang="en">
+	<BaseHead />
+	<body class="bg-light">
+		<Nav />
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>

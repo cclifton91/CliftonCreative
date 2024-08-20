@@ -1,0 +1,181 @@
+---
+
+---
+
+<section
+	class="hero flex items-center min-h-screen relative z-[1] py-16 lg:py-28 px-0 bg-cover bg-no-repeat bg-center text-center h-screen bg-gradient-1"
+	data-bg-animate="on">
+	<div class="w-[calc(100%_-_3rem)] mx-auto max-w-lg sm:max-w-3xl">
+		<div class="text-sm text-gray-900/40 mb-3">This is a Label</div>
+
+		<h1 class="text-4xl mb-2">Every champion was once a contender who refused to give up</h1>
+	</div>
+</section>
+
+<style>
+	.bg-gradient-1,
+	.bg-gradient-2,
+	.bg-gradient-3,
+	.bg-gradient-4,
+	.bg-gradient-5 {
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-1[data-bg-animate="on"],
+		.bg-gradient-2[data-bg-animate="on"],
+		.bg-gradient-3[data-bg-animate="on"],
+		.bg-gradient-4[data-bg-animate="on"],
+		.bg-gradient-5[data-bg-animate="on"] {
+			will-change: background-position;
+		}
+	}
+
+	.bg-gradient-1 {
+		background-color: #0e131f;
+		background-image: radial-gradient(ellipse at 90% 30%, #0e131f 20%, rgba(14, 19, 31, 0) 50%),
+			radial-gradient(ellipse at 70% 0%, #ff0035 0%, rgba(255, 0, 53, 0) 50%),
+			radial-gradient(ellipse at 20% 10%, #38405f 10%, rgba(56, 64, 95, 0) 70%),
+			radial-gradient(ellipse at 50% 100%, #ff0035 0%, rgba(255, 0, 53, 0) 50%);
+		background-size: 200% 100%;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-1[data-bg-animate="on"] {
+			background-size: 400% 200%;
+			background-position: 0% 0%;
+			animation: bg-gradient-anim-1 30s linear infinite;
+		}
+	}
+
+	@keyframes bg-gradient-anim-1 {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		25% {
+			background-position: 100% 100%;
+		}
+		50% {
+			background-position: 100% 0%;
+		}
+		75% {
+			background-position: 0% 100%;
+		}
+	}
+	.bg-gradient-2 {
+		background-color: #fffcf2;
+		background-image: radial-gradient(ellipse at 10% 20%, #e980fc 0%, rgba(233, 128, 252, 0) 40%),
+			radial-gradient(ellipse at 50% 0%, #fffcf2 25%, rgba(255, 252, 242, 0) 75%),
+			radial-gradient(ellipse at 100% 100%, #bcb6ff 35%, rgba(188, 182, 255, 0) 70%),
+			radial-gradient(ellipse at 50% 100%, #fffcf2 20%, rgba(255, 252, 242, 0) 70%);
+		background-size: 120% 200%;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-2[data-bg-animate="on"] {
+			background-size: 240% 400%;
+			background-position: 0% 0%;
+			animation: bg-gradient-anim-2 30s linear infinite;
+		}
+	}
+
+	@keyframes bg-gradient-anim-2 {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		25% {
+			background-position: 100% 100%;
+		}
+		50% {
+			background-position: 100% 0%;
+		}
+		75% {
+			background-position: 0% 100%;
+		}
+	}
+	.bg-gradient-3 {
+		background-color: #30c5ff;
+		background-image: radial-gradient(ellipse at 25% 90%, #5c946e 10%, rgba(92, 148, 110, 0) 70%),
+			radial-gradient(ellipse at 55% 90%, #fffcf2 0%, rgba(255, 252, 242, 0) 70%),
+			radial-gradient(ellipse at 100% 100%, #eb5e28 5%, rgba(235, 94, 40, 0) 60%),
+			radial-gradient(ellipse at 0% 0%, #5c946e 15%, rgba(92, 148, 110, 0) 50%),
+			radial-gradient(ellipse at 100% 0%, #fffcf2 30%, rgba(255, 252, 242, 0) 70%);
+		background-size: 100% 140%;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-3[data-bg-animate="on"] {
+			background-size: 200% 280%;
+			background-position: 50% 0%;
+			animation: bg-gradient-anim-3 30s linear infinite;
+		}
+	}
+
+	@keyframes bg-gradient-anim-3 {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		33% {
+			background-position: 100% 0%;
+		}
+		66% {
+			background-position: 100% 100%;
+		}
+	}
+	.bg-gradient-4 {
+		background-color: #1d1128;
+		background-image: radial-gradient(ellipse at 70% 0%, rgba(60, 31, 132, 0.7) 0%, rgba(60, 31, 132, 0) 30%),
+			radial-gradient(circle at 90% 0%, rgba(238, 68, 105, 0.5) 0%, rgba(238, 68, 105, 0) 30%),
+			radial-gradient(ellipse at 0% 0%, rgba(60, 185, 174, 0.15) 0%, rgba(60, 185, 174, 0) 40%),
+			radial-gradient(circle at 30% 100%, rgba(60, 31, 132, 0.7) 0%, rgba(60, 31, 132, 0) 40%),
+			radial-gradient(ellipse at 10% 100%, rgba(238, 68, 105, 0.5) 0%, rgba(238, 68, 105, 0) 40%),
+			radial-gradient(ellipse at 100% 100%, rgba(60, 185, 174, 0.15) 0%, rgba(60, 185, 174, 0) 40%);
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-4[data-bg-animate="on"] {
+			background-size: 200% 200%;
+			background-position: 0% 0%;
+			animation: bg-gradient-anim-4 30s linear infinite;
+		}
+	}
+
+	@keyframes bg-gradient-anim-4 {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		25% {
+			background-position: 100% 0%;
+		}
+		50% {
+			background-position: 100% 100%;
+		}
+		75% {
+			background-position: 0% 100%;
+		}
+	}
+	.bg-gradient-5 {
+		background-color: #e6e5f7;
+		background-image: radial-gradient(ellipse at 50% 0%, rgba(225, 91, 151, 0.35) 0%, rgba(225, 91, 151, 0) 30%),
+			radial-gradient(ellipse at 100% 0%, rgba(132, 19, 134, 0.32) 0%, rgba(132, 19, 134, 0) 60%);
+		background-size: 200% 100%;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-5[data-bg-animate="on"] {
+			background-size: 400% 200%;
+			background-position: 0% 0%;
+			animation: bg-gradient-anim-5 20s linear infinite;
+		}
+	}
+
+	@keyframes bg-gradient-anim-5 {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		40%,
+		60% {
+			background-position: 100% 0%;
+		}
+	}
+</style>

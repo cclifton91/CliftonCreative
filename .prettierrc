@@ -1,0 +1,9 @@
+{
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": true,
+    "css.format.insertSpaceBeforeFunctionParenthesis": false,
+    "css.format.newlineBetweenRules": false,
+    "css.format.newlineBeforeOpenBrace": false,
+    "proseWrap": "preserve"
+}
