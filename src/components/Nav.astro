@@ -2,6 +2,7 @@
 //imports
 import { Image } from "astro:assets";
 import logo from "@/assets/letterLogo.png";
+import { Icon } from "astro-icon/components";
 
 //props
 const navData = [
@@ -21,11 +22,11 @@ const navData = [
 ];
 ---
 
-<header class="header relative js-header">
+<header class="header absolute js-header bg-transparent">
 	<div class="header__container w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-7xl">
 		<div class="header__logo">
 			<a href="/">
-				<Image src={logo} alt="Clifton Create small logo" width="50" height="50" />
+				<Icon name="letterLogoLight" class="text-4xl" />
 			</a>
 		</div>
 
@@ -71,7 +72,6 @@ const navData = [
 		height: var(--header-height);
 		width: 100%;
 		@apply z-[3];
-		@apply border-b border-dark;
 	}
 
 	.header__container {
@@ -135,7 +135,7 @@ const navData = [
 
 	.header__link {
 		@apply text-xl lg:text-3xl;
-		@apply text-dark;
+		@apply text-light;
 		text-decoration: none;
 		@apply font-heading;
 	}
