@@ -1,0 +1,53 @@
+---
+//imports
+import { Image } from "astro:assets";
+import comingSoon from "@/assets/comingSoon.png";
+
+//props
+const { title, url, label } = Astro.props;
+---
+
+<!--FILL WITH NOTION DATA -->
+<li class="col-span-12 lg:col-span-4">
+	<a href={url} class="card-v8 bg-light border border-dark">
+		<figure>
+			<Image src={comingSoon} alt="Photo that says coming soon" />
+		</figure>
+
+		<footer class="p-3 lg:p-5">
+			<p class="text-sm lg:text-base text-gray-500 mb-3 lg:mb-5">{label}</p>
+			<div>
+				<h4 class="text-xl"><span class="card-v8__title">{title}</span></h4>
+			</div>
+		</footer>
+	</a>
+</li>
+
+<style>
+	.card-v8 {
+		display: block;
+		overflow: hidden;
+		text-decoration: none;
+		transition: 0.2s;
+	}
+	.card-v8 img {
+		display: block;
+		width: 100%;
+	}
+	.card-v8:hover {
+		@apply bg-white;
+		@apply shadow-md;
+	}
+	.card-v8:hover .card-v8__title {
+		background-size: 100% 100%;
+	}
+
+	.card-v8__title {
+		background-repeat: no-repeat;
+		will-change: background-size;
+		transition: background-size 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+		text-decoration: none;
+		background-image: linear-gradient(transparent 50%, hsla(245 58% 51% / 0.2) 50%);
+		background-size: 0% 100%;
+	}
+</style>

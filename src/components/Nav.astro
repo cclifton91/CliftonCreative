@@ -7,12 +7,12 @@ import { Icon } from "astro-icon/components";
 //props
 const navData = [
 	{
-		title: "Works",
-		href: "/projects",
-	},
-	{
 		title: "Home",
 		href: "/",
+	},
+	{
+		title: "Work",
+		href: "/projects",
 		icon: "logomark",
 	},
 	{
@@ -141,7 +141,7 @@ const navData = [
 	}
 	.header__link:hover,
 	.header__link[aria-current] {
-		@apply text-primary;
+		@apply text-dark;
 	}
 
 	.header__nav-btn {

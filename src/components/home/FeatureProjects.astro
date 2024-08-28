@@ -1,0 +1,59 @@
+---
+import Card from "../ui/Card.astro";
+---
+
+<section class="feature-v8 pb-20 lg:pb-32 bg-secondary">
+	<div class="feature-v8__main-content bg-light pt-20 lg:pt-32">
+		<div
+			class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
+			<div class="grid grid-cols-12 gap-y-5 lg:gap-8 lg:justify-between">
+				<div class="col-span-12 lg:col-span-6">
+					<div>
+						<h1 class="text-5xl font-heading text-dark">Projects</h1>
+					</div>
+				</div>
+
+				<div class="col-span-12 lg:col-span-5">
+					<div>
+						<p class="text-lg text-gray-500 font-subheading">
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus asperiores laudantium at sunt voluptatibus
+							a distinctio adipisci dicta, explicabo quidem.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
+		<ul class="feature-v8__sub-content grid grid-cols-12 gap-y-8 lg:gap-12">
+			<Card title="II Effiecient" url="#" label="Design & Development" />
+			<Card title="KRB Development" url="#" label="Design & Development" />
+			<Card title="NicoleAndersonEvents" url="#" label="Design & Development" />
+		</ul>
+	</div>
+</section>
+
+<style>
+	:root {
+		--feature-v8-gap: 3.25rem;
+	}
+	@media (min-width: 64rem) {
+		:root {
+			--feature-v8-gap: 5.125rem;
+		}
+	}
+
+	.feature-v8 {
+		position: relative;
+		z-index: 1;
+	}
+
+	.feature-v8__main-content {
+		padding-bottom: calc(var(--feature-v8-gap) * 2);
+	}
+
+	.feature-v8__sub-content {
+		margin-top: calc(var(--feature-v8-gap) * -1);
+	}
+</style>
