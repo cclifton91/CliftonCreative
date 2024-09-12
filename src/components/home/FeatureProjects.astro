@@ -1,15 +1,20 @@
 ---
+//import
 import Card from "../ui/Card.astro";
+import { getCollection } from "astro:content";
+
+//props
+const projects = await getCollection("projects");
 ---
 
-<section class="feature-v8 pb-20 lg:pb-32 bg-secondary">
+<section class="feature-v8 pb-20 lg:pb-32 bg-secondary border-b-2 border-dark">
 	<div class="feature-v8__main-content bg-light pt-20 lg:pt-32">
 		<div
 			class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
 			<div class="grid grid-cols-12 gap-y-5 lg:gap-8 lg:justify-between">
 				<div class="col-span-12 lg:col-span-6">
 					<div>
-						<h1 class="text-5xl font-heading text-dark">Projects</h1>
+						<h1 class="text-5xl font-heading text-dark">Works.</h1>
 					</div>
 				</div>
 
@@ -27,9 +32,7 @@ import Card from "../ui/Card.astro";
 
 	<div class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
 		<ul class="feature-v8__sub-content grid grid-cols-12 gap-y-8 lg:gap-12">
-			<Card title="II Effiecient" url="#" label="Design & Development" />
-			<Card title="KRB Development" url="#" label="Design & Development" />
-			<Card title="NicoleAndersonEvents" url="#" label="Design & Development" />
+			{projects.map(({ data }) => <Card data={data} />)}
 		</ul>
 	</div>
 </section>

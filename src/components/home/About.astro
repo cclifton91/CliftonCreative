@@ -1,0 +1,40 @@
+---
+//import
+import Button from "@/components/ui/Button.astro";
+import { Image } from "astro:assets";
+import comingSoon from "@/assets/comingSoon.png";
+
+//props
+---
+
+<section class="relative z-[1] bg-primary py-32 border-b-2 border-dark text-light">
+	<div class="w-[calc(100%_-_3rem)] mx-auto max-w-lg lg:max-w-5xl xl:max-w-7xl">
+		<div class="grid grid-cols-12 gap-y-8 lg:gap-8 items-center">
+			<div class="col-span-12 lg:col-span-6 lg:order-2">
+				<div class="flex flex-col gap-4">
+					<h1 class="font-bold text-5xl font-heading">Hello!</h1>
+					<p class="leading-normal font-body text-lg leading-7">
+						I’m Camille, the developer/designer who loves making the digital world a prettier place one pixel at a time.
+						I use this talent to create beautiful websites and brand assets for the budding entrepreneur, or anyone else
+						who would like to stake their place in the digital world. I don’t leave you hanging after the design and
+						development phase either. I handle the nitty-gritty tech stuff too. Domains? Check. Emails? Check. I like to
+						make sure your website has a cozy home on the internet and that your inbox is ready to handle all the fan
+						mail. I like to blend creativity with technical know-how to ensure your brand not only looks good, but
+						performs like a champ while being cost effective.
+					</p>
+
+					<div class="flex flex-wrap gap-4 items-center">
+						<Button label="Contact Me" variant="secondary" class="inline-flex justify-center items-center" />
+					</div>
+				</div>
+			</div>
+			<div class="col-span-12
+							lg:col-span-6
+							lg:order-1">
+				<figure class="border-2 border-dark">
+					<Image src={comingSoon} alt="Coming Soon" />
+				</figure>
+			</div>
+		</div>
+	</div>
+</section>

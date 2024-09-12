@@ -303,6 +303,7 @@ const navData = [
 					if (
 						trigger.getAttribute("aria-expanded") === "true" &&
 						isVisible(trigger) &&
+						document.activeElement &&
 						!document.activeElement.closest(".js-header")
 					)
 						trigger.click();

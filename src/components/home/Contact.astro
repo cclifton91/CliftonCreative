@@ -1,0 +1,72 @@
+---
+import ContactForm from "@/components/ui/ContactForm.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="feature-v8">
+	<div class="feature-v8__main-content bg-light pt-20 lg:pt-32">
+		<div
+			class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-lg md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
+			<div class="grid grid-cols-12 gap-y-5 lg:gap-8 lg:justify-between">
+				<div class="col-span-12 lg:col-span-5">
+					<div class="md:pt-8">
+						<ContactForm />
+					</div>
+				</div>
+
+				<div class="col-span-12 lg:col-span-6">
+					<div>
+						<h1 class="text-5xl font-heading text-quaternary text-right">Lets Work Together.</h1>
+					</div>
+					<dl class="details-list details-list--rows text-right">
+						<div class="details-list__item py-5 lg:py-8 flex items-center justify-end">
+							<a href="#"><Icon name="camera" class="text-3xl mr-2" /></a>
+							<a href="#"><Icon name="facebook" class="text-3xl mr-2" /></a>
+							<a href="#"><Icon name="linkedin" class="text-3xl" /></a>
+						</div>
+
+						<div class="details-list__item py-5 lg:py-8">
+							<dt class="font-bold mb-1.5 lg:mb-2 font-subheading text-quaternary">Email</dt>
+							<dd>
+								<a href="mailto:camille@cliftoncreative.dev" class="underline text-secondary">camille@cliftoncreative</a
+								>
+							</dd>
+						</div>
+
+						<div class="details-list__item py-5 lg:py-8">
+							<dt class="font-bold mb-1.5 lg:mb-2 font-subheading text-quaternary">Phone</dt>
+							<dd class="leading-snug">
+								<p><a href="tel:+44 7656 6455" class="underline text-indigo-700">+44 7656 6455</a></p>
+								<p class="text-gray-400">Mon - Fri, 9AM - 5PM</p>
+							</dd>
+						</div>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	:root {
+		--feature-v8-gap: 3.25rem;
+	}
+	@media (min-width: 64rem) {
+		:root {
+			--feature-v8-gap: 5.125rem;
+		}
+	}
+
+	.feature-v8 {
+		position: relative;
+		z-index: 1;
+	}
+
+	.feature-v8__main-content {
+		padding-bottom: calc(var(--feature-v8-gap) * 2);
+	}
+
+	.feature-v8__sub-content {
+		margin-top: calc(var(--feature-v8-gap) * -1);
+	}
+</style>
