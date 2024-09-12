@@ -3,7 +3,13 @@
 import Button from "@/components/ui/Button.astro";
 import { Image } from "astro:assets";
 import comingSoon from "@/assets/comingSoon.png";
-
+import astro from "@/assets/icons8-astro-64.png";
+import css from "@/assets/icons8-css-50.png";
+import html from "@/assets/icons8-html-50.png";
+import js from "@/assets/icons8-javascript-50.png";
+import netlify from "@/assets/icons8-netlify-48.png";
+import figma from "@/assets/icons8-figma-48.png";
+import canva from "@/assets/icons8-canva-48.png";
 //props
 ---
 
@@ -13,18 +19,28 @@ import comingSoon from "@/assets/comingSoon.png";
 			<div class="col-span-12 lg:col-span-6 lg:order-2">
 				<div class="flex flex-col gap-4">
 					<h1 class="font-bold text-5xl font-heading">Hello!</h1>
-					<p class="leading-normal font-body text-lg leading-7">
+					<p class="leading-normal font-boyd text-lg">
 						I’m Camille, the developer/designer who loves making the digital world a prettier place one pixel at a time.
 						I use this talent to create beautiful websites and brand assets for the budding entrepreneur, or anyone else
-						who would like to stake their place in the digital world. I don’t leave you hanging after the design and
-						development phase either. I handle the nitty-gritty tech stuff too. Domains? Check. Emails? Check. I like to
-						make sure your website has a cozy home on the internet and that your inbox is ready to handle all the fan
-						mail. I like to blend creativity with technical know-how to ensure your brand not only looks good, but
-						performs like a champ while being cost effective.
+						who would like to stake their place in the digital world.
 					</p>
-
-					<div class="flex flex-wrap gap-4 items-center">
-						<Button label="Contact Me" variant="secondary" class="inline-flex justify-center items-center" />
+					<p class="leading-normal font-boyd text-lg">
+						I don’t leave you hanging after the design and development phase either. I handle the nitty-gritty tech
+						stuff too. Domains? Check. Emails? Check. I like to make sure your website has a cozy home on the internet
+						and that your inbox is ready to handle all the fan mail. I like to blend creativity with technical know-how
+						to ensure your brand not only looks good, but performs like a champ while being cost effective.
+					</p>
+					<div>
+						<h3 class="font-bold text-3xl font-heading mb-4">Technical know-how</h3>
+						<div class="flex flex-wrap items-center gap-3">
+							<Image src={html} alt="HTML" class="w-12 h-12" />
+							<Image src={css} alt="CSS" class="w-12 h-12" />
+							<Image src={js} alt="JavaScript" class="w-12 h-12" />
+							<Image src={astro} alt="Astro" class="w-12 h-12" />
+							<Image src={netlify} alt="Netlify" class="w-12 h-12" />
+							<Image src={figma} alt="Figma" class="w-12 h-12" />
+							<Image src={canva} alt="Canva" class="w-12 h-12" />
+						</div>
 					</div>
 				</div>
 			</div>
