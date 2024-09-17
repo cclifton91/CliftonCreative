@@ -1,3 +1,12 @@
+backend:
+  name: git-gateway
+  repo: cclifton91/cliftoncreative
+  branch: main
+local_backend: true
+media_folder: src/assets
+public_folder: src/assets
+
+
 collections:
   - name: "projects" # Used in routes, e.g., /admin/collections/blog
     label: "Projects" # Used in the UI
@@ -8,5 +17,3 @@ collections:
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
-media_folder: "src/assets" # Location where files will be stored in the repo
-public_folder: "public/" # The src attribute for uploaded media
