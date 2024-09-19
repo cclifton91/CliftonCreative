@@ -1,18 +1,18 @@
 ---
 //imports
-import { Image } from "astro:assets";
-import comingSoon from "@/assets/comingSoon.png";
-import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets"
+import comingSoon from "@/assets/comingSoon.png"
+import type { CollectionEntry } from "astro:content"
 
 //props
 
-const { data } = Astro.props;
-const { title, description, tags, url, thumbnail } = data;
+const { data, slug } = Astro.props
+const { title, description, thumbnail } = data
 ---
 
 <!--FILL WITH NOTION DATA -->
 <li class="col-span-12 lg:col-span-4">
-	<a href={url} class="card-v8 bg-light border-2 border-dark">
+	<a href={`/projects/${slug}`} class="card-v8 bg-light border-2 border-dark">
 		<figure>
 			<Image src={thumbnail} alt="Photo that says coming soon" />
 		</figure>

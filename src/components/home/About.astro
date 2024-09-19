@@ -1,18 +1,12 @@
 ---
 //import
-import { Image } from "astro:assets";
-import comingSoon from "@/assets/comingSoon.png";
-import astro from "@/assets/icons8-astro-64.png";
-import css from "@/assets/icons8-css-50.png";
-import html from "@/assets/icons8-html-50.png";
-import js from "@/assets/icons8-javascript-50.png";
-import netlify from "@/assets/icons8-netlify-48.png";
-import figma from "@/assets/icons8-figma-48.png";
-import canva from "@/assets/icons8-canva-48.png";
+import { Image } from "astro:assets"
+import comingSoon from "@/assets/comingSoon.png"
+
 //props
 ---
 
-<section class="relative z-[1] bg-primary py-32 border-b-2 border-dark text-light">
+<section id="#about" class="relative z-[1] bg-primary py-32 border-b-2 border-dark text-light">
 	<div class="w-[calc(100%_-_3rem)] mx-auto max-w-lg lg:max-w-5xl xl:max-w-7xl">
 		<div class="grid grid-cols-12 gap-y-8 lg:gap-8 items-center">
 			<div class="col-span-12 lg:col-span-6 lg:order-2">
@@ -29,18 +23,6 @@ import canva from "@/assets/icons8-canva-48.png";
 						and that your inbox is ready to handle all the fan mail. I like to blend creativity with technical know-how
 						to ensure your brand not only looks good, but performs like a champ while being cost effective.
 					</p>
-					<div>
-						<h3 class="font-bold text-3xl font-heading mb-4">Technical know-how</h3>
-						<div class="flex flex-wrap items-center gap-3">
-							<Image src={html} alt="HTML" class="w-12 h-12" />
-							<Image src={css} alt="CSS" class="w-12 h-12" />
-							<Image src={js} alt="JavaScript" class="w-12 h-12" />
-							<Image src={astro} alt="Astro" class="w-12 h-12" />
-							<Image src={netlify} alt="Netlify" class="w-12 h-12" />
-							<Image src={figma} alt="Figma" class="w-12 h-12" />
-							<Image src={canva} alt="Canva" class="w-12 h-12" />
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="col-span-12

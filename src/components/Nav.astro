@@ -1,8 +1,8 @@
 ---
 //imports
-import { Image } from "astro:assets";
-import logo from "@/assets/letterLogo.png";
-import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets"
+import logo from "@/assets/letterLogo.png"
+import { Icon } from "astro-icon/components"
 
 //props
 const navData = [
@@ -11,15 +11,18 @@ const navData = [
 		href: "/",
 	},
 	{
+		title: "About",
+		href: "#about",
+	},
+	{
 		title: "Work",
-		href: "/projects",
-		icon: "logomark",
+		href: "#projects",
 	},
 	{
 		title: "Contact",
-		href: "/contact",
+		href: "#contact",
 	},
-];
+]
 ---
 
 <header class="header absolute js-header bg-transparent">
@@ -250,42 +253,42 @@ const navData = [
 	if (!Util) function Util() {}
 
 	Util.hasClass = function (el: Element, className: string): boolean {
-		return el.classList.contains(className);
-	};
+		return el.classList.contains(className)
+	}
 
 	Util.addClass = function (el: Element, className: string): void {
-		const classList = className.split(" ");
-		el.classList.add(classList[0]);
-		if (classList.length > 1) Util.addClass(el, classList.slice(1).join(" "));
-	};
+		const classList = className.split(" ")
+		el.classList.add(classList[0])
+		if (classList.length > 1) Util.addClass(el, classList.slice(1).join(" "))
+	}
 
 	Util.removeClass = function (el: Element, className: string): void {
-		const classList = className.split(" ");
-		el.classList.remove(classList[0]);
-		if (classList.length > 1) Util.removeClass(el, classList.slice(1).join(" "));
-	};
+		const classList = className.split(" ")
+		el.classList.remove(classList[0])
+		if (classList.length > 1) Util.removeClass(el, classList.slice(1).join(" "))
+	}
 
 	Util.toggleClass = function (el: Element, className: string, bool: boolean): void {
-		if (bool) Util.addClass(el, className);
-		else Util.removeClass(el, className);
-	};
+		if (bool) Util.addClass(el, className)
+		else Util.removeClass(el, className)
+	}
 
 	// File#: _1_main-header
 	// Usage: codyhouse.co/license
-	(function () {
-		const mainHeader = document.getElementsByClassName("js-header");
+	;(function () {
+		const mainHeader = document.getElementsByClassName("js-header")
 		if (mainHeader.length > 0) {
 			const trigger = mainHeader[0].getElementsByClassName("js-header__trigger")[0] as HTMLElement,
-				nav = mainHeader[0].getElementsByClassName("js-header__nav")[0] as HTMLElement;
+				nav = mainHeader[0].getElementsByClassName("js-header__nav")[0] as HTMLElement
 
 			// we'll use these to store the node that needs to receive focus when the mobile menu is closed
-			let focusMenu: HTMLElement | false = false;
+			let focusMenu: HTMLElement | false = false
 
 			//detect click on nav trigger
 			trigger.addEventListener("click", function (event: Event) {
-				event.preventDefault();
-				toggleNavigation(!Util.hasClass(nav, "header__nav--is-visible"));
-			});
+				event.preventDefault()
+				toggleNavigation(!Util.hasClass(nav, "header__nav--is-visible"))
+			})
 
 			// listen for key events
 			window.addEventListener("keyup", function (event: KeyboardEvent) {
@@ -293,8 +296,8 @@ const navData = [
 				if (event.key && event.key.toLowerCase() === "escape") {
 					// close navigation on mobile if open
 					if (trigger.getAttribute("aria-expanded") === "true" && isVisible(trigger)) {
-						focusMenu = trigger; // move focus to menu trigger when menu is close
-						trigger.click();
+						focusMenu = trigger // move focus to menu trigger when menu is close
+						trigger.click()
 					}
 				}
 				// listen for tab key
@@ -306,38 +309,38 @@ const navData = [
 						document.activeElement &&
 						!document.activeElement.closest(".js-header")
 					)
-						trigger.click();
+						trigger.click()
 				}
-			});
+			})
 
 			// listen for resize
-			let resizingId: ReturnType<typeof setTimeout> | undefined = undefined;
+			let resizingId: ReturnType<typeof setTimeout> | undefined = undefined
 			window.addEventListener("resize", function () {
-				clearTimeout(resizingId);
-				resizingId = setTimeout(doneResizing, 500);
-			});
+				clearTimeout(resizingId)
+				resizingId = setTimeout(doneResizing, 500)
+			})
 
 			function doneResizing() {
-				if (!isVisible(trigger) && Util.hasClass(mainHeader[0], "header--expanded")) toggleNavigation(false);
+				if (!isVisible(trigger) && Util.hasClass(mainHeader[0], "header--expanded")) toggleNavigation(false)
 			}
 
 			function isVisible(element: HTMLElement): boolean {
-				return !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length);
+				return !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length)
 			}
 
 			function toggleNavigation(bool: boolean): void {
 				// toggle navigation visibility on small device
-				Util.toggleClass(nav, "header__nav--is-visible", bool);
-				Util.toggleClass(mainHeader[0], "header--expanded", bool);
-				trigger.setAttribute("aria-expanded", bool.toString());
+				Util.toggleClass(nav, "header__nav--is-visible", bool)
+				Util.toggleClass(mainHeader[0], "header--expanded", bool)
+				trigger.setAttribute("aria-expanded", bool.toString())
 				if (bool) {
 					//opening menu -> move focus to first element inside nav
-					(nav.querySelectorAll("[href], input:not([disabled]), button:not([disabled])")[0] as HTMLElement).focus();
+					;(nav.querySelectorAll("[href], input:not([disabled]), button:not([disabled])")[0] as HTMLElement).focus()
 				} else if (focusMenu) {
-					focusMenu.focus();
-					focusMenu = false;
+					focusMenu.focus()
+					focusMenu = false
 				}
 			}
 		}
-	})();
+	})()
 </script>
