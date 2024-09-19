@@ -6,11 +6,11 @@ const { label, href, type = "button", variant = "primary", onClick } = Astro.pro
 function variantClasses(variant) {
 	switch (variant) {
 		case "primary":
-			return "bg-primary text-white px-4 py-2 border border-dark relative inline-flex justify-center items-center whitespace-nowrap cursor-pointer no-underline leading-tight transition-all duration-200 hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-300"
+			return "bg-primary text-white px-4 py-2 border border-2 border-dark relative inline-flex justify-center items-center whitespace-nowrap cursor-pointer no-underline leading-tight transition-all duration-200 hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-300"
 		case "secondary":
-			return "bg-secondary text-white px-4 py-2 border border-dark relative inline-flex justify-center items-center whitespace-nowrap cursor-pointer no-underline leading-tight transition-all duration-200 "
+			return "bg-secondary text-white px-4 py-2 border border-2 border-dark relative inline-flex justify-center items-center whitespace-nowrap cursor-pointer no-underline leading-tight transition-all duration-200 "
 		case "outline":
-			return "border border-primary text-primary px-4 py-2 border border-dark relative inline-flex justify-center items-center whitespace-nowrap cursor-pointer no-underline leading-tight transition-all duration-200"
+			return "border border-primary text-primary px-4 py-2 border border-2 border-dark relative inline-flex justify-center items-center whitespace-nowrap cursor-pointer no-underline leading-tight transition-all duration-200"
 		default:
 			return ""
 	}

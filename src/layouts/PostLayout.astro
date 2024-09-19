@@ -22,13 +22,14 @@ const { title, description, thumbnail } = Astro.props
 				<div class="t-article-v3__hero mb-8 lg:mb-12 bg-gradient-3" data-bg-animate="on">
 					<div class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-lg md:max-w-3xl">
 						<div class="t-article-v3__intro-text text-center">
-							<h1 class="text-5xl mb-3 text-inherit font-heading">{title}</h1>
+							<h1 class="text-5xl font-bold mb-3 text-inherit font-heading">{title}</h1>
 						</div>
 					</div>
 				</div>
 
 				<div class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-lg md:max-w-3xl mb-12 lg:mb-20">
-					<div class="prose max-w-3xl mx-auto prose-figcaption:text-center prose-a:text-indigo-700 prose-img:mx-auto">
+					<div
+						class="prose prose-figcaption:text-center prose-a:text-dark prose-h2:font-heading prose-h3:font-subheading prose-h4:font-subheading prose-img:mx-auto prose-img:border prose-img:border-dark prose-a:border-secondary prose-p:font-body max-w-3xl mx-auto">
 						<slot />
 						<div class="pt-8 flex flex-row justify-center align-center">
 							<Button label="Back Home" href="/" type="button" variant="primary" />
