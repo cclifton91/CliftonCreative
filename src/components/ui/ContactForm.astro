@@ -8,6 +8,7 @@ import Button from "@/components/ui/button.astro"
 	method="POST"
 	class="form-validate js-form-validate"
 	netlify-honeypot="bot-field"
+	action="/pages/thankYou"
 	data-netlify="true">
 	<fieldset class="mb-5 lg:mb-8">
 		<legend class="mb-4 text-contrast-higher font-heading text-xl text-quaternary">Project Request</legend>
@@ -120,7 +121,7 @@ import Button from "@/components/ui/button.astro"
 					/>
 					<div
 						role="alert"
-						class="form-validate__error-msg bg-red-600/20 px-2 lg:px-3 py-1.5 lg:py-2 rounded text-xs text-gray-900 mt-1.5 lg:mt-2">
+						class="form-validate__error-msg bg-red-600/20 px-2 lg:px-3 py-1.5 lg:py-2 text-xs text-gray-900 mt-1.5 lg:mt-2">
 						<p>Provide a valid email address.</p>
 					</div>
 
@@ -137,7 +138,7 @@ import Button from "@/components/ui/button.astro"
 						/>
 						<div
 							role="alert"
-							class="form-validate__error-msg bg-red-600/20 px-2 lg:px-3 py-1.5 lg:py-2 rounded text-xs text-gray-900 mt-1.5 lg:mt-2">
+							class="form-validate__error-msg bg-red-600/20 px-2 lg:px-3 py-1.5 lg:py-2 text-xs text-gray-900 mt-1.5 lg:mt-2">
 							<p>Must include a number.</p>
 							<p class="text-xs text-gray-500 mt-1.5 lg:mt-2">Include a number.</p>
 						</div>
@@ -297,4 +298,152 @@ import Button from "@/components/ui/button.astro"
 			}
 		}
 	})()
+	/*****************************FORM VALIDATION *****************************/
+	;(function () {
+		interface FormValidatorOptions {
+			element: HTMLElement
+			inputErrorClass: string
+			inputWrapperErrorClass: string
+			customValidate: Record<string, (field: HTMLElement, callback: (result: boolean) => void) => void>
+		}
+
+		class FormValidator {
+			private options: FormValidatorOptions
+			private element: HTMLElement
+			private input: HTMLInputElement[]
+			private textarea: HTMLTextAreaElement[]
+			private select: HTMLSelectElement[]
+			private errorFields: HTMLElement[]
+			private errorFieldListeners: (() => void)[]
+
+			static defaults: FormValidatorOptions = {
+				element: document.createElement("div"),
+				inputErrorClass: "form-control--error",
+				inputWrapperErrorClass: "form-validate__input-wrapper--error",
+				customValidate: {},
+			}
+
+			constructor(opts: Partial<FormValidatorOptions>) {
+				this.options = extendProps(FormValidator.defaults, opts) as FormValidatorOptions
+				this.element = this.options.element
+				this.input = []
+				this.textarea = []
+				this.select = []
+				this.errorFields = []
+				this.errorFieldListeners = []
+				this.initFormValidator()
+			}
+
+			validate(cb?: (errorFields: HTMLElement[]) => void) {
+				this.validateForm()
+				if (cb) cb(this.errorFields)
+			}
+
+			private initFormValidator() {
+				this.input = Array.from(this.element.querySelectorAll("input"))
+				this.textarea = Array.from(this.element.querySelectorAll("textarea"))
+				this.select = Array.from(this.element.querySelectorAll("select"))
+			}
+
+			private validateForm() {
+				this.errorFields = []
+				this.resetEventListeners()
+				;[...this.input, ...this.textarea, ...this.select].forEach((field) => {
+					this.validateField(field)
+				})
+
+				this.errorFields.forEach((field) => {
+					this.showError(field)
+				})
+
+				if (this.errorFields.length > 0) this.errorFields[0].focus()
+			}
+
+			private validateField(field: HTMLElement) {
+				if (!(field as HTMLInputElement).checkValidity()) {
+					this.errorFields.push(field)
+					return
+				}
+				const customValidate = field.getAttribute("data-validate")
+				if (customValidate && this.options.customValidate[customValidate]) {
+					this.options.customValidate[customValidate](field, (result: boolean) => {
+						if (!result) this.errorFields.push(field)
+					})
+				}
+			}
+
+			private showError(field: HTMLElement) {
+				this.toggleErrorClasses(field, true)
+
+				const listener = () => {
+					this.toggleErrorClasses(field, false)
+					field.removeEventListener("change", listener)
+					field.removeEventListener("input", listener)
+				}
+				this.errorFieldListeners.push(listener)
+				field.addEventListener("change", listener)
+				field.addEventListener("input", listener)
+			}
+
+			private toggleErrorClasses(field: HTMLElement, bool: boolean) {
+				if (bool) {
+					field.classList.add(this.options.inputErrorClass)
+				} else {
+					field.classList.remove(this.options.inputErrorClass)
+				}
+				if (this.options.inputWrapperErrorClass) {
+					const wrapper = field.closest(".js-form-validate__input-wrapper")
+					if (wrapper) {
+						if (bool) {
+							wrapper.classList.add(this.options.inputWrapperErrorClass)
+						} else {
+							wrapper.classList.remove(this.options.inputWrapperErrorClass)
+						}
+					}
+				}
+			}
+
+			private resetEventListeners() {
+				this.errorFields.forEach((field, index) => {
+					this.toggleErrorClasses(field, false)
+					field.removeEventListener("change", this.errorFieldListeners[index])
+					field.removeEventListener("input", this.errorFieldListeners[index])
+				})
+
+				this.errorFields = []
+				this.errorFieldListeners = []
+			}
+		}
+
+		function extendProps<T>(defaults: T, opts: Partial<T>): T {
+			return { ...defaults, ...opts }
+		}
+
+		;(window as any).FormValidator = FormValidator
+	})()
+	/** Initalize Form Validation **********************************/
+	document.addEventListener("DOMContentLoaded", () => {
+		const formElement = document.querySelector("#contactForm")
+		const formValidator = new (window as any).FormValidator({ element: formElement })
+
+		formElement.addEventListener("submit", (event) => {
+			event.preventDefault() // Prevent the default form submission
+			formValidator.validate((errorFields) => {
+				if (errorFields.length === 0) {
+					// No validation errors, proceed with form submission
+					;(formElement as HTMLFormElement).submit()
+				} else {
+					// Handle validation errors
+					errorFields.forEach((field) => {
+						const errorMsg = field
+							.closest(".js-form-validate__input-wrapper")
+							.querySelector(".form-validate__error-msg")
+						if (errorMsg) {
+							errorMsg.style.display = "block"
+						}
+					})
+				}
+			})
+		})
+	})
 </script>
