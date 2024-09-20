@@ -9,6 +9,7 @@ import Button from "@/components/ui/button.astro"
 	class="form-validate js-form-validate"
 	netlify-honeypot="bot-field"
 	action="/pages/thankYou"
+	id="contactForm"
 	data-netlify="true">
 	<fieldset class="mb-5 lg:mb-8">
 		<legend class="mb-4 text-contrast-higher font-heading text-xl text-quaternary">Project Request</legend>
@@ -424,26 +425,30 @@ import Button from "@/components/ui/button.astro"
 	/** Initalize Form Validation **********************************/
 	document.addEventListener("DOMContentLoaded", () => {
 		const formElement = document.querySelector("#contactForm")
-		const formValidator = new (window as any).FormValidator({ element: formElement })
+		if (formElement) {
+			const formValidator = new (window as any).FormValidator({ element: formElement })
 
-		formElement.addEventListener("submit", (event) => {
-			event.preventDefault() // Prevent the default form submission
-			formValidator.validate((errorFields) => {
-				if (errorFields.length === 0) {
-					// No validation errors, proceed with form submission
-					;(formElement as HTMLFormElement).submit()
-				} else {
-					// Handle validation errors
-					errorFields.forEach((field) => {
-						const errorMsg = field
-							.closest(".js-form-validate__input-wrapper")
-							.querySelector(".form-validate__error-msg")
-						if (errorMsg) {
-							errorMsg.style.display = "block"
-						}
-					})
-				}
+			formElement.addEventListener("submit", (event) => {
+				event.preventDefault() // Prevent the default form submission
+				formValidator.validate((errorFields) => {
+					if (errorFields.length === 0) {
+						// No validation errors, proceed with form submission
+						;(formElement as HTMLFormElement).submit()
+					} else {
+						// Handle validation errors
+						errorFields.forEach((field) => {
+							const errorMsg = field
+								.closest(".js-form-validate__input-wrapper")
+								.querySelector(".form-validate__error-msg")
+							if (errorMsg) {
+								errorMsg.style.display = "block"
+							}
+						})
+					}
+				})
 			})
-		})
+		} else {
+			console.error("Form element not found")
+		}
 	})
 </script>
