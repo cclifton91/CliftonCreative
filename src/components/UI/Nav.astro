@@ -1,0 +1,61 @@
+---
+
+---
+
+<nav
+	x-data="{ open: false }"
+	class="fixed top-0 left-0 z-50 w-full border-b bg-transparent backdrop-blur-md border-black/20">
+	<div class="mx-auto flex max-w-7xl items-center justify-center px-4 py-4">
+		<!-- Desktop Nav -->
+		<ul class="hidden md:flex items-center space-x-10 font-body text-sm uppercase tracking-widest">
+			<li><a href="#about" class="hover:text-ccBlue">About</a></li>
+			<li><a href="#services" class="hover:text-ccBlue">Services</a></li>
+			<li><a href="#portfolio" class="hover:text-ccBlue">Portfolio</a></li>
+			<li><a href="#FAQ" class="hover:text-ccBlue">faq</a></li>
+			<li><a href="#contact" class="hover:text-ccBlue">Work With Me</a></li>
+		</ul>
+		<!-- Hamburger -->
+		<button
+			type="button"
+			@click="open = !open"
+			class="md:hidden text-ccDark focus:outline-none bg-transparent px-2 py-1 border border-gray-500 rounded">
+			<span
+				x-show="!open"
+				x-transition:enter="transition ease-out duration-200"
+				x-transition:enter-start="opacity-0 scale-95"
+				x-transition:enter-end="opacity-100 scale-100"
+				x-transition:leave="transition ease-in duration-200"
+				x-transition:leave-start="opacity-100 scale-100"
+				x-transition:leave-end="opacity-0 scale-95">☰</span
+			>
+			<span
+				x-show="open"
+				x-transition:enter="transition ease-out duration-200"
+				x-transition:enter-start="opacity-0 scale-95"
+				x-transition:enter-end="opacity-100 scale-100"
+				x-transition:leave="transition ease-in duration-200"
+				x-transition:leave-start="opacity-100 scale-100"
+				x-transition:leave-end="opacity-0 scale-95">✕</span
+			>
+		</button>
+	</div>
+	<!-- Mobile Menu -->
+	<div
+		x-show="open"
+		x-transition:enter="transition ease-out duration-200"
+		x-transition:enter-start="opacity-0 scale-95"
+		x-transition:enter-end="opacity-100 scale-100"
+		x-transition:leave="transition ease-in duration-200"
+		x-transition:leave-start="opacity-100 scale-100"
+		x-transition:leave-end="opacity-0 scale-95"
+		@click.away="open = false"
+		class="md:hidden absolute top-full left-0 w-full bg-black/40 backdrop-blur-md border-t border-black/20">
+		<ul class="flex flex-col items-center space-y-4 p-6 font-body text-sm uppercase tracking-widest text-ccLight">
+			<li><a href="#about" @click="open = false" class="hover:text-ccYellow">About</a></li>
+			<li><a href="#services" @click="open = false" class="hover:text-ccYellow">Services</a></li>
+			<li><a href="#portfolio" @click="open = false" class="hover:text-ccYellow">Portfolio</a></li>
+			<li><a href="#FAQ" @click="open = false" class="hover:text-ccYellow">faq</a></li>
+			<li><a href="#contact" @click="open = false" class="hover:text-ccYellow">Work With Me</a></li>
+		</ul>
+	</div>
+</nav>

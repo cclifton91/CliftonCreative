@@ -1,0 +1,66 @@
+---
+interface Props {
+	href?: string
+	type?: "button" | "submit" | "reset"
+	target?: string
+	rel?: string
+	variant?: "primary" | "secondary" | "ghost" | "danger"
+	hoverEffect?: boolean
+	class?: string
+}
+
+const {
+	href,
+	type = "button",
+	target,
+	rel,
+	variant = "primary",
+	hoverEffect = true,
+	class: customClass = "",
+} = Astro.props
+
+const baseClass =
+	"inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-2xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+
+const variants = {
+	primary: "bg-ccGreen text-white hover:bg-blue-ccGreenDarker",
+	secondary: "bg-ccPurple text-white border border-ccPurple hover:bg-ccPurpleDarker",
+	ghost: "bg-transparent text-ccDark border border-ccBlue hover:bg-ccBlueDarker hover:text-white",
+	danger: "bg-red-600 text-white hover:bg-red-700",
+}
+
+const hoverClass = hoverEffect ? "" : "!hover:none"
+
+const classes = `${baseClass} ${variants[variant]} ${hoverClass} ${customClass}`
+---
+
+{
+	href ? (
+		<a href={href} target={target} rel={rel} class={classes}>
+			<slot />
+		</a>
+	) : (
+		<button type={type} class={classes}>
+			<slot />
+		</button>
+	)
+}
+
+// Usage examples:
+<!--
+<BaseButton href="/contact" variant="primary">
+  Contact Me
+</BaseButton>
+
+<BaseButton href="https://example.com" target="_blank" rel="noopener" variant="ghost">
+  Visit External
+</BaseButton>
+
+<BaseButton variant="ghost" hoverEffect={false}>
+  No Hover
+</BaseButton>
+
+<form method="post">
+  <BaseButton type="submit" variant="danger">Delete</BaseButton>
+</form>
+-->

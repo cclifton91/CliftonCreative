@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+
+  --font-body: 'Merriweather Sans', sans;
+  --font-headings: 'DM Serif Text', sans-serif;
+
+  --color-ccRed: #9f422f;
+  --color-ccRedDarker: #773224;
+  --color-ccGreen: #7f8052;
+  --color-ccGreenDarker: #505032;
+  --color-ccYellow: #dca464;
+  --color-ccYellowDarker: #A47A4A;
+  --color-ccBlue: #5B78A2;
+  --color-ccBlueDarker: #3E526F;
+  --color-ccTaupe: #ba9085;
+  --color-ccPurple: #866b96;
+  --color-ccPurpleDarker: #614C6D;
+  --color-ccDark: #333330;
+  --color-ccLight: #e7e3df;
+}
