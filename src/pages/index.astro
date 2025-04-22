@@ -1,28 +1,16 @@
 ---
-import FeatureProjects from "@/components/home/FeatureProjects.astro"
-import Hero from "@/components/home/Hero.astro"
-import Marquee from "@/components/home/Marquee.astro"
-import About from "@/components/home/About.astro"
-import BaseLayout from "@/layouts/BaseLayout.astro"
-import Contact from "@/components/home/Contact.astro"
+
 ---
 
-<BaseLayout>
-	<Hero />
-	<Marquee />
-	<About />
-	<FeatureProjects />
-	<Contact />
-</BaseLayout>
-
-<!-- Styles	 -->
-<style is:global>
-	html {
-		scroll-behavior: smooth;
-	}
-	@media (prefers-reduced-motion: reduce) {
-		html {
-			scroll-behavior: auto;
-		}
-	}
-</style>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+	</body>
+</html>
