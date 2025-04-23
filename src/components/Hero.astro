@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components"
+---
+
+<section class="h-screen bg-gradient-1 flex flex-col items-center justify-center" data-bg-animate="on" id="home">
+	<div class="container px-4 mx-auto">
+		<div class="container flex items-center justify-center px-4 mx-auto pt-10">
+			<!-- SVG HERE -->
+			<Icon name="Light" class="w-3/4 h-3/4" />
+		</div>
+	</div>
+</section>
+
+<style>
+	.bg-gradient-1 {
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-1[data-bg-animate="on"] {
+			will-change: background-position;
+		}
+	}
+	.bg-gradient-1 {
+		background-color: #ba9085;
+		background-image: radial-gradient(ellipse at 90% 30%, #7f8052 20%, rgba(14, 19, 31, 0) 50%),
+			radial-gradient(ellipse at 70% 0%, #9f422f 0%, rgba(255, 0, 53, 0) 50%),
+			radial-gradient(ellipse at 20% 10%, #866b96 10%, rgba(56, 64, 95, 0) 70%),
+			radial-gradient(ellipse at 50% 100%, #dca464 0%, rgba(255, 0, 53, 0) 50%);
+		background-size: 200% 100%;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-1[data-bg-animate="on"] {
+			background-size: 400% 200%;
+			background-position: 0% 0%;
+			animation: bg-gradient-anim-1 30s linear infinite;
+		}
+	}
+
+	@keyframes bg-gradient-anim-1 {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		25% {
+			background-position: 100% 100%;
+		}
+		50% {
+			background-position: 100% 0%;
+		}
+		75% {
+			background-position: 0% 100%;
+		}
+	}
+</style>
