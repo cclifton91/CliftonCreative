@@ -1,0 +1,175 @@
+---
+
+---
+
+<section class="py-36" id="FAQ">
+	<div class="container px-4 mx-auto">
+		<h2
+			class="mb-16 text-3xl leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight font-bold font-headings text-center">
+			Frequently Asked Questions
+		</h2>
+		<div class="max-w-4xl mx-auto">
+			<ul class="space-y-4">
+				<li class="px-6 py-8 rounded-lg border border-ccYellow" x-data="{ accordion: false }">
+					<button
+						class="group w-full flex justify-between items-center text-left font-bold font-heading"
+						x-on:click="accordion = !accordion">
+						<span class="text-lg font-bold font-heading group-hover:text-ccYellow">How much do your services cost?</span
+						>
+						<span :class="{'rotate-180': accordion, 'rotate-0': !accordion }" class="inline-block transform rotate-0">
+							<svg
+								class="flex-shrink-0 w-4 h-4 ml-2 text-ccYellow"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</span>
+					</button>
+					<div
+						x-ref="container"
+						:style="accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''"
+						class="overflow-hidden h-0 duration-500"
+						style="">
+						<p class="max-w-2xl mt-2 text-lg text-gray-500 leading-loose">
+							My base package starts at $800 for a custom one-page website — fast, clean, and built to last with no
+							monthly hosting fees. You own the site outright, and it includes everything most small businesses need to
+							get online.
+						</p>
+						<p class="max-w-2xl mt-2 text-lg text-gray-500 leading-loose">
+							Need more? I offer logo design, copywriting, booking tools, and more.
+						</p>
+					</div>
+				</li>
+				<li class="px-6 py-8 rounded-lg border border-ccGreen" x-data="{ accordion: false }">
+					<button
+						class="group w-full flex justify-between items-center text-left font-bold font-heading"
+						x-on:click="accordion = !accordion">
+						<span class="text-lg font-bold font-heading group-hover:text-ccGreen">What's the process like?</span>
+						<span :class="{'rotate-180': accordion, 'rotate-0': !accordion }" class="inline-block transform rotate-0">
+							<svg
+								class="flex-shrink-0 w-4 h-4 ml-2 text-ccGreen"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</span>
+					</button>
+					<div
+						x-ref="container"
+						:style="accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''"
+						class="overflow-hidden h-0 duration-500"
+						style="">
+						<p class="max-w-2xl mt-2 text-lg text-gray-500 leading-loose">
+							You tell me what you need. I design and build it. We launch it on a fast, free platform (like Netlify).
+							You brag to your friends.
+						</p>
+					</div>
+				</li>
+				<li class="px-6 py-8 rounded-lg border border-ccPurple" x-data="{ accordion: false }">
+					<button
+						class="group w-full flex justify-between items-center text-left font-bold font-heading"
+						x-on:click="accordion = !accordion">
+						<span class="text-lg font-bold font-heading group-hover:text-ccPurple"
+							>How does building a website with you save money?</span
+						>
+						<span :class="{'rotate-180': accordion, 'rotate-0': !accordion }" class="inline-block transform rotate-0">
+							<svg
+								class="flex-shrink-0 w-4 h-4 ml-2 text-ccPurple"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</span>
+					</button>
+					<div
+						x-ref="container"
+						:style="accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''"
+						class="overflow-hidden h-0 duration-500"
+						style="">
+						<p class="max-w-2xl mt-2 text-lg text-gray-500 leading-loose">
+							I use modern tools (Astro + Netlify + Tailwind) that don’t need expensive hosting, monthly platforms, or
+							maintenance fees. You pay once, and your site lives online — fast and free and yours. It's also scaleable,
+							so you only pay for what you use.
+						</p>
+					</div>
+				</li>
+				<li class="px-6 py-8 rounded-lg border border-ccRed" x-data="{ accordion: false }">
+					<button class="group w-full flex justify-between items-center text-left" x-on:click="accordion = !accordion">
+						<span class="text-lg font-bold font-heading group-hover:text-ccRed"
+							>What other services do you provide?</span
+						>
+						<span :class="{'rotate-180': accordion, 'rotate-0': !accordion }" class="inline-block transform rotate-180">
+							<svg
+								class="flex-shrink-0 w-4 h-4 ml-2 text-ccRed"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</span>
+					</button>
+					<div
+						x-ref="container"
+						:style="accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''"
+						class="overflow-hidden h-0 duration-500"
+						style="height: 456px">
+						<dl class="max-w-2xl mt-2 leading-loose">
+							<dt class="text-ccRed font-bold">Logo &amp; Color Scheme Design</dt><dd class="text-gray-500 text-md">
+								-from $150
+							</dd><dd class="text-gray-500 text-md">
+								- Get a custom logo and cohesive branding that fits your business vibe.
+							</dd><dt class="text-ccRed font-bold">Copywriting &amp; Content Help</dt><dd
+								class="text-gray-500 text-md">
+								-from $100
+							</dd><dd class="text-gray-500 text-md">
+								- Don’t know what to say? I’ll write it with clarity, confidence, and a bit of style. (Does not include
+								images).
+							</dd><dt class="text-ccRed font-bold">API Integration</dt><dd class="text-gray-500 text-md">
+								-from $100
+							</dd><dd class="text-gray-500 text-md">
+								- I can hook you up with tools like Calendly, Google Sheets, AirTable for awesome automation.
+							</dd><dt class="text-ccRed font-bold">Extra Pages</dt><dd class="text-gray-500 text-md">-from $200</dd><dd
+								class="text-gray-500 text-md">
+								- Need more than one page? No problem — let’s scale it.
+							</dd>
+						</dl>
+					</div>
+				</li>
+				<li class="px-6 py-8 rounded-lg border border-ccBlue" x-data="{ accordion: false }">
+					<button class="group w-full flex justify-between items-center text-left" x-on:click="accordion = !accordion">
+						<span class="text-lg font-bold font-heading group-hover:text-ccBlue"
+							>What do you use to build websites?</span
+						>
+						<span :class="{'rotate-180': accordion, 'rotate-0': !accordion }" class="inline-block transform rotate-0">
+							<svg
+								class="flex-shrink-0 w-4 h-4 ml-2 text-ccBlue"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</span>
+					</button>
+					<div
+						x-ref="container"
+						:style="accordion ? 'height: ' + $refs.container.scrollHeight + 'px' : ''"
+						class="overflow-hidden h-0 duration-500"
+						style="">
+						<p class="max-w-2xl mt-2 text-lg text-gray-500 leading-loose">
+							I use JAMstack tools like Astro (super fast), Tailwind CSS (for slick styling), and Netlify (for free
+							hosting). You don’t have to worry about any of that — I handle the tech so you don’t have to.
+						</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>

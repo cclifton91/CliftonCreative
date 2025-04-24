@@ -1,11 +1,129 @@
 ---
-
+const blocks = [
+	{
+		color: "bg-[#9f422f]",
+		label: "Final Frontier",
+		size: "aspect-square md:aspect-[4/5]",
+		description: "Brand & Website Build for a Real Estate Wholesale Company",
+	},
+	{
+		color: "bg-[#866b96]",
+		label: "II Efficient Media",
+		size: "aspect-square md:aspect-[4/5]",
+		description: "Brand & Portfolio Build for a Videotographer",
+	},
+	{
+		color: "bg-[#dca464]",
+		label: "KRB Development",
+		size: "aspect-square md:aspect-[4/5]",
+		description: "Brand & Website Build for a Real Estate Developer",
+	},
+	{
+		color: "bg-[#7f8052]",
+		label: "Nicole Anders Events",
+		size: "aspect-square md:aspect-[4/5]",
+		description: "Website For An Event Coordinator",
+	},
+]
 ---
 
-<section class="relative z-[1]" id="portfolio">
+<section class="relative z-[1] bg-[#f9f6f3]" id="portfolio">
+	<!-- Sticky Heading -->
 	<div class="sticky z-[1] top-0">
 		<div class="mx-auto max-w-3xl h-screen flex justify-center items-center">
-			<h2 class="text-5xl lg:text-9xl font-headings">Recent Work</h2>
+			<h2 id="portfolio-heading" class="text-7xl lg:text-9xl font-headings transition-opacity duration-700">
+				Recent Work
+			</h2>
+		</div>
+	</div>
+
+	<!-- Custom Grid Reveal Layout -->
+	<div class="relative z-[2] py-12 lg:py-20">
+		<div class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-5xl">
+			<ul id="portfolio-grid" class="columns-1 sm:columns-1 md:columns-2 gap-x-10 reveal-gallery">
+				{
+					blocks.map((block, index) => (
+						<li
+							class={`reveal-item opacity-0 transform translate-y-12 transition-all duration-700 ease-out w-full mb-16 break-inside-avoid overflow-hidden stagger-${index + 1}`}
+							style={`transition-delay: ${index * 150}ms`}>
+							<div
+								class={`rounded-xl text-white shadow-xl p-6 aspect-[4/3] flex items-end ${block.color} ${block.size}`}>
+								<span class="text-xl font-semibold">{block.label}</span>
+							</div>
+							<div class="mt-4 px-1">
+								<h3 class="text-lg font-semibold text-gray-900 font-headings">{block.label}</h3>
+								<p class="text-sm text-gray-600 mt-1">{block.description}</p>
+							</div>
+						</li>
+					))
+				}
+			</ul>
 		</div>
 	</div>
 </section>
+
+<style>
+	.reveal-item {
+		will-change: opacity, transform;
+	}
+
+	/* Optional: subtle stagger */
+	.reveal-gallery .stagger-1 {
+		margin-top: 0rem;
+	}
+	.reveal-gallery .stagger-2 {
+		margin-top: 1.5rem;
+	}
+	.reveal-gallery .stagger-3 {
+		margin-top: 1rem;
+	}
+	.reveal-gallery .stagger-4 {
+		margin-top: 2rem;
+	}
+</style>
+
+<script is:inline>
+	document.addEventListener("DOMContentLoaded", () => {
+		const heading = document.getElementById("portfolio-heading")
+		const grid = document.getElementById("portfolio-grid")
+
+		// Observer for the heading fade effect
+		const headingObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					// When grid is intersecting (visible), fade out the heading
+					if (entry.isIntersecting) {
+						heading.style.opacity = "0"
+					} else {
+						heading.style.opacity = "1"
+					}
+				})
+			},
+			{
+				rootMargin: "-20% 0px", // Adjust this to control when the fade happens
+				threshold: 0.2, // Lower threshold to make it easier to trigger
+			}
+		)
+
+		if (grid) {
+			headingObserver.observe(grid)
+		}
+
+		// Observer for the reveal animation of portfolio items
+		const items = document.querySelectorAll(".reveal-item")
+		const itemObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.remove("opacity-0", "translate-y-12")
+						entry.target.classList.add("opacity-100", "translate-y-0")
+						itemObserver.unobserve(entry.target)
+					}
+				})
+			},
+			{ threshold: 0.1 }
+		)
+
+		items.forEach((item) => itemObserver.observe(item))
+	})
+</script>
