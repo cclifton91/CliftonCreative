@@ -14,104 +14,138 @@ import BaseButton from "../UI/BaseButton.astro"
     phone: '',
     service: '',
     message: '',
-    error: {},
+    errors: {},
 
     validateField(field) {
-    delete this.error[field]
+      // Clear previous error for this field
+      delete this.errors[field]
 
-    switch (field) {
-      case 'fullname':
-        if (!this.fullname) {
-          this.error.fullname = 'Full name is required'
-        }
-        break
-      case 'email':
-					if (!this.email || !this.email.includes('@')) {
-						this.errors.email = 'Valid email is required'
-					}
-					break
-				case 'phone':
-					if (!this.phone) {
-						this.errors.phone = 'Phone number is required'
-					} else {
-						const cleaned = this.phone.replace(/[^0-9]/g, '');
-						if (!(cleaned.length === 10 || (cleaned.length === 11 && cleaned.startsWith('1')))) {
-							this.errors.phone = 'Please enter a valid US phone number';
-						}
-					}
-					break
-				case 'message':
-					if (!this.message) this.errors.message = 'Message is required'
-					break
+      switch (field) {
+        case 'fullname':
+          if (!this.fullname) {
+            this.errors.fullname = 'Full name is required'
+          }
+          break
+        case 'email':
+          if (!this.email) {
+            this.errors.email = 'Email is required'
+          } else if (!this.email.includes('@') || !this.email.includes('.')) {
+            this.errors.email = 'Valid email is required'
+          }
+          break
+        case 'phone':
+          if (!this.phone) {
+            this.errors.phone = 'Phone number is required'
+          } else {
+            const cleaned = this.phone.replace(/[^0-9]/g, '');
+            if (!(cleaned.length === 10 || (cleaned.length === 11 && cleaned.startsWith('1')))) {
+              this.errors.phone = 'Please enter a valid US phone number';
+            }
+          }
+          break
+        case 'service':
+          if (!this.service) {
+            this.errors.service = 'Please select a service option'
+          }
+          break
+        case 'message':
+          if (!this.message) {
+            this.errors.message = 'Message is required'
+          }
+          break
+      }
+    },
+
+    validateForm() {
+      // Clear all previous errors
+      this.errors = {}
+      
+      // Validate all fields
+      this.validateField('fullname')
+      this.validateField('email')
+      this.validateField('phone')
+      this.validateField('service')
+      this.validateField('message')
+      
+      // Submit if no errors
+      if (Object.keys(this.errors).length === 0) {
+        $el.submit()
+      }
     }
-  },
-
-  validateForm() {
-			this.errors = {}
-	
-			if (!this.fullname) this.errors.firstname = 'First name is required'
-			if (!this.email || !this.email.includes('@')) this.errors.email = 'Valid email is required'
-			if (!this.message) this.errors.message = 'Message is required'
-	
-			const cleaned = this.phone.replace(/[^0-9]/g, '');
-			if (!cleaned || !(cleaned.length === 10 || (cleaned.length === 11 && cleaned.startsWith('1')))) {
-				this.errors.phone = 'Please enter a valid US phone number'
-			}
-	
-			if (Object.keys(this.errors).length === 0) {
-				$el.submit()
-			}
-		}
-	}"
+  }"
 	@submit.prevent="validateForm">
 	<!--BOT -->
 	<input type="hidden" name="form-name" value="contact" />
 	<p class="hidden">
 		<label
-			>Don’t fill this out if you’re human:
+			>Don't fill this out if you're human:
 			<input name="bot-field" />
 		</label>
 	</p>
 	<!-- Inputs -->
-	<div>
+	<div class="flex flex-col items-start mb-4">
+		<label class="font-headings font-semibold mb-2" for="fullname">Full Name</label>
 		<input
-			class="w-full py-3 pl-3 mb-4 border rounded border-ccBlue"
+			class="w-full py-3 pl-3 mb-4 border rounded border-ccBlue text-gray-400"
 			type="text"
 			placeholder="Full Name"
 			name="fullname"
 			id="fullname"
 			x-model="fullname"
-			@input="this.errors && delete this.errors.fullname"
-			@bluer="validateField('fullname')"
+			@blur="validateField('fullname')"
 		/>
 		<template x-if="errors.fullname">
-			<p class="text-red-500 text-sm mt-1" x-text="errors.fullname"></p>
+			<p class="text-red-500 text-sm mt-1 mb-2 text-left" x-text="errors.fullname"></p>
 		</template>
 	</div>
-	<input
-		class="w-full py-3 pl-3 mb-4 border rounded border-ccBlue"
-		type="text"
-		placeholder="Best contact email"
-		id="email"
-		name="email"
-	/>
-	<input
-		class="w-full py-3 pl-3 mb-4 border rounded border-ccBlue"
-		type="text"
-		placeholder="Phone number"
-		id="phone"
-		name="phone"
-	/>
-	<div>
-		<div class="relative mb-4">
+
+	<div class="flex flex-col items-start mb-4">
+		<label class="font-headings font-semibold mb-2" for="email">Email</label>
+		<input
+			class="w-full py-3 pl-3 mb-4 border rounded border-ccBlue text-gray-400"
+			type="email"
+			placeholder="Email Address"
+			id="email"
+			name="email"
+			x-model="email"
+			@blur="validateField('email')"
+		/>
+		<template x-if="errors.email">
+			<p class="text-red-500 text-sm mt-1 mb-2 text-left" x-text="errors.email"></p>
+		</template>
+	</div>
+
+	<div class="flex flex-col items-start mb-4">
+		<label class="font-headings font-semibold mb-2" for="phone">Phone Number</label>
+		<input
+			class="w-full py-3 pl-3 mb-4 border rounded border-ccBlue text-gray-400"
+			type="text"
+			placeholder="Phone number"
+			id="phone"
+			name="phone"
+			x-model="phone"
+			@blur="validateField('phone')"
+		/>
+		<template x-if="errors.phone">
+			<p class="text-red-500 text-sm mt-1 mb-2 text-left" x-text="errors.phone"></p>
+		</template>
+	</div>
+
+	<div class="flex flex-col items-start mb-4">
+		<label class="font-headings font-semibold mb-2" for="service">What can I help you with?</label>
+		<div class="relative mb-4 w-full">
 			<select
 				class="appearance-none w-full py-4 pl-3 text-xs font-semibold leading-none border rounded border-ccBlue bg-white"
-				name="service">
-				<option>What do you need help with?</option>
-				<option>I need a website.</option>
-				<option>I need branding (logo, color scheme, ect)</option>
-				<option>I need both</option>
-				<option>I need something else</option>
+				name="service"
+				id="service"
+				x-model="service"
+				@change="validateField('service')"
+				@blur="validateField('service')">
+				<option value=""></option>
+				<option value="website">I need a website.</option>
+				<option value="branding">I need branding (logo, color scheme, etc.)</option>
+				<option value="both">I need both</option>
+				<option value="other">I need something else</option>
 			</select>
 			<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
 				<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -119,13 +153,26 @@ import BaseButton from "../UI/BaseButton.astro"
 				</svg>
 			</div>
 		</div>
+		<template x-if="errors.service">
+			<p class="text-red-500 text-sm mt-1 mb-2" x-text="errors.service"></p>
+		</template>
 	</div>
-	<textarea
-		class="mb-4 w-full p-3 border rounded resize-none border-ccBlue"
-		name="message"
-		cols="30"
-		rows="10"
-		placeholder="How can I help you?"
-		id=""></textarea>
+
+	<div class="flex flex-col items-start mb-4">
+		<label class="font-headings font-semibold mb-2" for="message">Message</label>
+		<textarea
+			class="mb-4 w-full p-3 border rounded resize-none border-ccBlue"
+			name="message"
+			cols="30"
+			rows="10"
+			placeholder="How can I help you?"
+			id="message"
+			x-model="message"
+			@blur="validateField('message')"></textarea>
+		<template x-if="errors.message">
+			<p class="text-red-500 text-sm mt-1 mb-2" x-text="errors.message"></p>
+		</template>
+	</div>
+
 	<BaseButton type="submit" variant="primary">Send</BaseButton>
 </form>

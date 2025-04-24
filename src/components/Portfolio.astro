@@ -2,27 +2,31 @@
 const blocks = [
 	{
 		color: "bg-[#9f422f]",
-		label: "Final Frontier",
+		label: "II Efficient Media",
+		img: "./src/assets/iiEfficient3-4.png",
 		size: "aspect-square md:aspect-[4/5]",
-		description: "Brand & Website Build for a Real Estate Wholesale Company",
+		description: "Brand & website build for a content creator",
 	},
 	{
 		color: "bg-[#866b96]",
-		label: "II Efficient Media",
+		label: "Nicole Anders Events",
 		size: "aspect-square md:aspect-[4/5]",
-		description: "Brand & Portfolio Build for a Videotographer",
+		img: "./src/assets/nicole3-4.png",
+		description: "Webiste for an event coordinator",
 	},
 	{
 		color: "bg-[#dca464]",
 		label: "KRB Development",
+		img: "./src/assets/krb3-4.png",
 		size: "aspect-square md:aspect-[4/5]",
-		description: "Brand & Website Build for a Real Estate Developer",
+		description: "Brand & website Build for a Real Estate Developer",
 	},
 	{
-		color: "bg-[#7f8052]",
-		label: "Nicole Anders Events",
+		color: "bg-[#5B78A2]",
+		label: "Final Frontier",
+		img: "./src/assets/finalfrontier3-4.png",
 		size: "aspect-square md:aspect-[4/5]",
-		description: "Website For An Event Coordinator",
+		description: "Brand & website build for a real estate wholesaler",
 	},
 ]
 ---
@@ -47,8 +51,8 @@ const blocks = [
 							class={`reveal-item opacity-0 transform translate-y-12 transition-all duration-700 ease-out w-full mb-16 break-inside-avoid overflow-hidden stagger-${index + 1}`}
 							style={`transition-delay: ${index * 150}ms`}>
 							<div
-								class={`rounded-xl text-white shadow-xl p-6 aspect-[4/3] flex items-end ${block.color} ${block.size}`}>
-								<span class="text-xl font-semibold">{block.label}</span>
+								class={`rounded-xl text-white shadow-xl py-10 px-6 aspect-[4/3] flex flex-col items-start ${block.color} ${block.size}`}>
+								<img src={block.img} alt={block.label} class="w-full h-full object-contain rounded" />
 							</div>
 							<div class="mt-4 px-1">
 								<h3 class="text-lg font-semibold text-gray-900 font-headings">{block.label}</h3>
