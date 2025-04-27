@@ -1,0 +1,96 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro"
+import Footer from "../../components/Footer.astro"
+import { getCollection, render } from "astro:content"
+
+export async function getStaticPaths() {
+	const projects = await getCollection("projects")
+	return projects.map((project) => ({
+		params: { slug: project.data.slug },
+		props: { project },
+	}))
+}
+
+const { project } = Astro.props
+const { Content } = await render(project)
+---
+
+<ProjectLayout slug={project.data.slug} title={project.data.title} description={project.data.description}>
+	<section class="py-20 bg-gradient-1">
+		<div class="container px-4 mx-auto">
+			<div class="mt-16">
+				<div class="container px-4 mx-auto">
+					<div class="max-w-xl lg:max-w-4xl mx-auto text-center mb-16">
+						<span class="text-xs font-semibold text-ccPurple uppercase">Web Development & Design</span>
+						<h2
+							class="mb-8 mt-2 text-white opacity-80 text-3xl leading-tight md:text-4xl md:leading-tight lg:text-7xl lg:leading-tight font-bold font-headings">
+							{project.data.title}
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="py-20">
+		<div class="container px-4 mx-auto">
+			<div class="flex flex-wrap items-center -mx-4">
+				<div class="w-full lg:w-1/2 px-4 mb-16 lg:mb-0">
+					<div class="lg:max-w-md">
+						<h2
+							class="mb-12 text-3xl leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight font-bold font-headings">
+							{project.data.description}
+						</h2>
+						<Content />
+					</div>
+				</div>
+				<div class="w-full lg:w-1/2 px-4">
+					<img class="rounded-lg w-full object-cover" src="plain-assets/images/indigo-600-square.png" alt="" />
+				</div>
+			</div>
+		</div>
+	</section>
+</ProjectLayout>
+
+<style>
+	.bg-gradient-1 {
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-1[data-bg-animate="on"] {
+			will-change: background-position;
+		}
+	}
+	.bg-gradient-1 {
+		background-color: #e7e3df;
+		background-image:
+			radial-gradient(ellipse at 90% 30%, #7f8052 20%, rgba(14, 19, 31, 0) 50%),
+			radial-gradient(ellipse at 70% 0%, #5b78a2 0%, rgba(255, 0, 53, 0) 50%),
+			radial-gradient(ellipse at 20% 10%, #866b96 10%, rgba(56, 64, 95, 0) 70%),
+			radial-gradient(ellipse at 50% 100%, #dca464 0%, rgba(255, 0, 53, 0) 50%);
+		background-size: 200% 100%;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.bg-gradient-1[data-bg-animate="on"] {
+			background-size: 400% 200%;
+			background-position: 0% 0%;
+			animation: bg-gradient-anim-1 30s linear infinite;
+		}
+	}
+
+	@keyframes bg-gradient-anim-1 {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		25% {
+			background-position: 100% 100%;
+		}
+		50% {
+			background-position: 100% 0%;
+		}
+		75% {
+			background-position: 0% 100%;
+		}
+	}
+</style>

@@ -1,4 +1,15 @@
 ---
+import { getCollection } from "astro:content"
+
+// Fetch all projects from the content collection
+const projectEntries = await getCollection("projects")
+
+// Map to create a lookup object by title for easier matching
+const projectsByTitle = {}
+projectEntries.forEach((project) => {
+	projectsByTitle[project.data.title] = project
+})
+
 const blocks = [
 	{
 		color: "bg-[#9f422f]",
@@ -46,20 +57,28 @@ const blocks = [
 		<div class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-5xl">
 			<ul id="portfolio-grid" class="columns-1 sm:columns-1 md:columns-2 gap-x-10 reveal-gallery">
 				{
-					blocks.map((block, index) => (
-						<li
-							class={`reveal-item opacity-0 transform translate-y-12 transition-all duration-700 ease-out w-full mb-16 break-inside-avoid overflow-hidden stagger-${index + 1}`}
-							style={`transition-delay: ${index * 150}ms`}>
-							<div
-								class={`rounded-xl text-white shadow-xl py-10 px-6 aspect-[4/3] flex flex-col items-start ${block.color} ${block.size}`}>
-								<img src={block.img} alt={block.label} class="w-full h-full object-contain rounded" />
-							</div>
-							<div class="mt-4 px-1">
-								<h3 class="text-lg font-semibold text-gray-900 font-headings">{block.label}</h3>
-								<p class="text-sm text-gray-600 mt-1">{block.description}</p>
-							</div>
-						</li>
-					))
+					blocks.map((block, index) => {
+						// Find the matching project by title
+						const project = projectsByTitle[block.label]
+						const projectUrl = project ? `/projects/${project.data.slug}` : "#"
+
+						return (
+							<li
+								class={`reveal-item opacity-0 transform translate-y-12 transition-all duration-700 ease-out w-full mb-16 break-inside-avoid overflow-hidden stagger-${index + 1}`}
+								style={`transition-delay: ${index * 150}ms`}>
+								<a href={projectUrl} class="block hover:opacity-95 transition-opacity">
+									<div
+										class={`rounded-xl text-white shadow-xl py-10 px-6 aspect-[4/3] flex flex-col items-start ${block.color} ${block.size}`}>
+										<img src={block.img} alt={block.label} class="w-full h-full object-contain rounded" />
+									</div>
+									<div class="mt-4 px-1">
+										<h3 class="text-lg font-semibold text-gray-900 font-headings">{block.label}</h3>
+										<p class="text-sm text-gray-600 mt-1">{block.description}</p>
+									</div>
+								</a>
+							</li>
+						)
+					})
 				}
 			</ul>
 		</div>

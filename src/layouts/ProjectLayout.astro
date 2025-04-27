@@ -1,0 +1,70 @@
+---
+import "../styles/global.css"
+import { SEO } from "astro-seo"
+
+// Define the interface for the props
+interface Props {
+	title: string
+	description: string
+	slug: string
+	// Add any other frontmatter properties you want to use
+}
+
+// Get the props from the parent component
+const { title, description, slug } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<SEO
+			title={`${title} | Clifton Creative`}
+			description={description}
+			openGraph={{
+				basic: {
+					title: `${title} | Clifton Creative Web Development & Design`,
+					type: "website",
+					image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+				},
+				optional: {
+					description: description,
+				},
+			}}
+			extend={{
+				// extending the default link tags
+				link: [{ rel: "icon", href: "/favicon.ico" }],
+				// extending the default meta tags
+				meta: [
+					{
+						name: "twitter:image",
+						content:
+							"https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+					},
+					{ name: "twitter:title", content: title },
+					{ name: "twitter:description", content: description },
+				],
+			}}
+		/>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+			rel="stylesheet"
+		/>
+		<!--Alpline Plugin -->
+		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+		<!-- Favicon -->
+		<link rel="icon" href="/favicon.ico" />
+	</head>
+	<body>
+		<header>
+			<slot name="header" />
+		</header>
+		<main class="antialiased bg-ccLight text-ccDark font-body">
+			<slot />
+		</main>
+	</body>
+</html>
