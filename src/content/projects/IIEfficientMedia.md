@@ -1,5 +1,5 @@
 ---
-slug: krbdev
+slug: IIEfficientMedia
 title: II Efficient Media
 description: Branding and website for a videographer.
 ---

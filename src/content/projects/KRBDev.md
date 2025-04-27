@@ -1,6 +1,6 @@
 ---
-slug: krbdev
-title: KRB Development
+slug: krbdevelopmententerprise
+title: KRB Development Enterprise
 description: Branding and website for real estate developer.
 ---
 

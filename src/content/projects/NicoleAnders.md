@@ -1,6 +1,6 @@
 ---
-slug: nicoleanders
-title: Nicole Anders
+slug: nicoleandersevents
+title: Nicole Anders Events
 description: Website for an event coordinator.
 ---
 
