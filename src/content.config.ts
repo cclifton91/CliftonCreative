@@ -3,10 +3,12 @@ import { glob } from "astro/loaders"
 
 const projects = defineCollection({
     loader: glob({ pattern: "src/content/projects/**/*.md" }),
-    schema: z.object ({
+    schema: ({ image }) => z.object ({
         slug: z.string(), 
         title: z.string(),
         description: z.string(), 
+        projectImg: image(),
+        projectImgAlt: z.string(),
       }),
     });
 

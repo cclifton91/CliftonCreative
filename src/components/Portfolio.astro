@@ -27,10 +27,10 @@ const blocks = [
 	},
 	{
 		color: "bg-[#dca464]",
-		label: "KRB Development Enterprise",
-		img: "./src/assets/krb3-4.png",
+		label: "KRB Foundation",
+		img: "./src/assets/foundation3-4.png",
 		size: "aspect-square md:aspect-[4/5]",
-		description: "Brand & website Build for a Real Estate Developer",
+		description: "Business Brochure Website for a non-profit organization",
 	},
 	{
 		color: "bg-[#5B78A2]",
@@ -61,6 +61,16 @@ const blocks = [
 						// Find the matching project by title
 						const project = projectsByTitle[block.label]
 						const projectUrl = project ? `/projects/${project.data.slug}` : "#"
+
+						// Debug logging (remove in production)
+						if (block.label === "KRB Foundation") {
+							console.log("KRB Foundation block:", {
+								label: block.label,
+								project: project,
+								slug: project?.data.slug,
+								url: projectUrl,
+							})
+						}
 
 						return (
 							<li

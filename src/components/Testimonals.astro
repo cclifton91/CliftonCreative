@@ -13,41 +13,80 @@
 				We have a pretty good time over here, building and designing websites that work just as hard as you do.
 			</p>
 		</div>
-		<div class="flex flex-wrap items-center justify-around -m-4">
+		<div class="flex flex-wrap items-stretch justify-around -m-4">
 			<div class="w-full md:w-1/2 lg:w-1/3 p-4">
-				<div class="p-6 rounded-lg bg-ccGreen">
-					<p class="mb-8 text-base leading-relaxed lg:text-xl lg:leading-relaxed text-gray-50">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim quam ultricies, placerat tellus
-						sed, laoreet orci. Duis luctus quam ac metus gravida sodales. Sed a ex accumsan, pellentesque sem eget,
-						scelerisque dolor.
-					</p>
-					<p class="text-2xl font-bold font-headings">Danny Bailey</p>
-					<p class="text-lg text-gray-50">CEO & Founder</p>
+				<div class="p-6 rounded-lg bg-ccGreen h-full flex flex-col">
+					<div class="flex-grow overflow-auto testimonial-content">
+						<p class="mb-8 text-base leading-relaxed lg:text-xl lg:leading-relaxed text-gray-50">
+							"Camille took care of everything for us. I have no idea how to get a website up and running, and I didn't
+							want to be responsible trying to make my website look good. She even hooked up my domain name and email! I
+							just had to tell her what I wanted, and she made it happen."
+						</p>
+					</div>
+					<div class="mt-auto">
+						<p class="text-2xl font-bold font-headings">Ken</p>
+						<p class="text-lg text-gray-50">KRB Development Enterprise</p>
+					</div>
 				</div>
 			</div>
 			<div class="w-full md:w-1/2 lg:w-1/3 p-4">
-				<div class="p-6 rounded-lg bg-ccPurple">
-					<p class="mb-8 text-base leading-relaxed lg:text-xl lg:leading-relaxed text-gray-50">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim quam ultricies, placerat tellus
-						sed, laoreet orci. Duis luctus quam ac metus gravida sodales. Sed a ex accumsan, pellentesque sem eget,
-						scelerisque dolor.
-					</p>
-					<p class="text-2xl font-bold font-headings">Danny Bailey</p>
-					<p class="text-lg text-gray-50">CEO & Founder</p>
+				<div class="p-6 rounded-lg bg-ccYellow h-full flex flex-col">
+					<div class="flex-grow overflow-auto testimonial-content">
+						<p class="mb-8 text-base leading-relaxed lg:text-xl lg:leading-relaxed text-gray-50">
+							"I needed a website to collect leads and store it in a google spreadsheet I had set up. She automated
+							everything, and now my workflow is smooth."
+						</p>
+					</div>
+					<div class="mt-auto">
+						<p class="text-2xl font-bold font-headings">David</p>
+						<p class="text-lg text-gray-50">Final Frontier</p>
+					</div>
 				</div>
 			</div>
 			<div class="w-full md:w-1/2 lg:w-1/3 p-4">
-				<div class="p-6 rounded-lg bg-ccRed">
-					<p class="mb-8 text-base leading-relaxed lg:text-xl lg:leading-relaxed text-gray-50">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim quam ultricies, placerat tellus
-						sed, laoreet orci. Duis luctus quam ac metus gravida sodales. Sed a ex accumsan, pellentesque sem eget,
-						scelerisque dolor.
-					</p>
-					<p class="text-2xl font-bold font-headings">Danny Bailey</p>
-					<p class="text-lg text-gray-50">CEO & Founder</p>
+				<div class="p-6 rounded-lg bg-ccBlue h-full flex flex-col">
+					<div class="flex-grow overflow-auto testimonial-content">
+						<p class="mb-8 text-base leading-relaxed lg:text-xl lg:leading-relaxed text-gray-50">
+							"If you want something that stands out she's your girl. I have a website that looks good and I can upload
+							any video I want to showcase on it. Thats everything I needed."
+						</p>
+					</div>
+					<div class="mt-auto">
+						<p class="text-2xl font-bold font-headings">Kenny</p>
+						<p class="text-lg text-gray-50">II Efficient Media</p>
+					</div>
 				</div>
 			</div>
 			<div class="w-full md:w-1/2 lg:w-1/3 p-4"></div>
 		</div>
 	</div>
 </section>
+
+<style>
+	/* Set a fixed height for testimonial cards on desktop */
+	@media (min-width: 1024px) {
+		.testimonial-content {
+			min-height: 200px; /* Adjust this value as needed */
+			max-height: 200px; /* Makes all cards the same height */
+		}
+	}
+
+	/* Optional: Add custom scrollbar styling */
+	.testimonial-content::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	.testimonial-content::-webkit-scrollbar-track {
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 10px;
+	}
+
+	.testimonial-content::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.3);
+		border-radius: 10px;
+	}
+
+	.testimonial-content::-webkit-scrollbar-thumb:hover {
+		background: rgba(255, 255, 255, 0.5);
+	}
+</style>

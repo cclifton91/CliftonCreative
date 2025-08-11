@@ -2,6 +2,7 @@
 import ProjectLayout from "../../layouts/ProjectLayout.astro"
 import Footer from "../../components/Footer.astro"
 import { getCollection, render } from "astro:content"
+import BaseButton from "../../components/UI/BaseButton.astro"
 
 export async function getStaticPaths() {
 	const projects = await getCollection("projects")
@@ -31,24 +32,25 @@ const { Content } = await render(project)
 			</div>
 		</div>
 	</section>
-	<section class="py-20">
-		<div class="container px-4 mx-auto">
-			<div class="flex flex-wrap items-center -mx-4">
-				<div class="w-full lg:w-1/2 px-4 mb-16 lg:mb-0">
-					<div class="lg:max-w-md">
-						<h2
-							class="mb-12 text-3xl leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight font-bold font-headings">
-							{project.data.description}
-						</h2>
-						<Content />
-					</div>
+	<div class="project-content-container py-36">
+		<div class="fixed-content">
+			<div class="lg:max-w-lg mx-auto px-4">
+				<h2
+					class="mb-12 text-3xl leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight font-bold font-headings">
+					{project.data.description}
+				</h2>
+				<div class="prose prose-h2:font-bold prose-h2:text-2xl prose-a:text-blue-600">
+					<Content />
 				</div>
-				<div class="w-full lg:w-1/2 px-4">
-					<img class="rounded-lg w-full object-cover" src="plain-assets/images/indigo-600-square.png" alt="" />
+				<div class="mt-16">
+					<BaseButton href="/#contact" variant="primary"> Contact Me </BaseButton>
 				</div>
 			</div>
 		</div>
-	</section>
+		<div class="scrollable-content">
+			<img class="rounded-lg w-full object-cover" src={project.data.projectImg.src} alt="" />
+		</div>
+	</div>
 </ProjectLayout>
 
 <style>
@@ -92,5 +94,47 @@ const { Content } = await render(project)
 		75% {
 			background-position: 0% 100%;
 		}
+	}
+
+	/* New styles for the fixed/scrollable layout */
+	.project-content-container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	@media (min-width: 1024px) {
+		.project-content-container {
+			flex-direction: row;
+			min-height: 100vh;
+		}
+
+		.fixed-content {
+			position: sticky;
+			top: 0;
+			width: 50%;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			padding: 2rem 0;
+			overflow-y: auto;
+		}
+
+		.scrollable-content {
+			width: 50%;
+			padding: 2rem;
+		}
+	}
+
+	/* For mobile, stack them normally */
+	.fixed-content,
+	.scrollable-content {
+		width: 100%;
+		padding: 1rem;
+	}
+
+	.scrollable-content img {
+		max-width: 100%;
+		height: auto;
 	}
 </style>
