@@ -1,6 +1,12 @@
 ---
 import { getCollection } from "astro:content"
 
+// Import images from assets folder
+import iiEfficientImg from "../assets/iiEfficient3-4.png"
+import nicoleImg from "../assets/nicole3-4.png"
+import krbImg from "../assets/foundation3-4.png"
+import finalFrontierImg from "../assets/finalfrontier3-4.png"
+
 // Fetch all projects from the content collection
 const projectEntries = await getCollection("projects")
 
@@ -14,7 +20,7 @@ const blocks = [
 	{
 		color: "bg-[#9f422f]",
 		label: "II Efficient Media",
-		img: "./src/assets/iiEfficient3-4.png",
+		img: iiEfficientImg,
 		size: "aspect-square md:aspect-[4/5]",
 		description: "Brand & website build for a content creator",
 	},
@@ -22,20 +28,20 @@ const blocks = [
 		color: "bg-[#866b96]",
 		label: "Nicole Anders Events",
 		size: "aspect-square md:aspect-[4/5]",
-		img: "./src/assets/nicole3-4.png",
+		img: nicoleImg,
 		description: "Webiste for an event coordinator",
 	},
 	{
 		color: "bg-[#dca464]",
 		label: "KRB Foundation",
-		img: "./src/assets/foundation3-4.png",
+		img: krbImg,
 		size: "aspect-square md:aspect-[4/5]",
 		description: "Business Brochure Website for a non-profit organization",
 	},
 	{
 		color: "bg-[#5B78A2]",
 		label: "Final Frontier",
-		img: "./src/assets/finalfrontier3-4.png",
+		img: finalFrontierImg,
 		size: "aspect-square md:aspect-[4/5]",
 		description: "Brand & website build for a real estate wholesaler",
 	},
@@ -69,7 +75,7 @@ const blocks = [
 								<a href={projectUrl} class="block hover:opacity-95 transition-opacity">
 									<div
 										class={`rounded-xl text-white shadow-xl py-10 px-6 aspect-[4/3] flex flex-col items-start ${block.color} ${block.size}`}>
-										<img src={block.img} alt={block.label} class="w-full h-full object-contain rounded" />
+										<img src={block.img.src} alt={block.label} class="w-full h-full object-contain rounded" />
 									</div>
 									<div class="mt-4 px-1">
 										<h3 class="text-lg font-semibold text-gray-900 font-headings">{block.label}</h3>
