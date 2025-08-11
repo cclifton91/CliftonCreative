@@ -7,13 +7,17 @@ import { SEO } from "astro-seo"
 <html lang="en">
 	<head>
 		<SEO
-			title="Clifton Creative"
-			description="A heavily optimized description full of well-researched keywords."
+			title="Clifton Creative - Custom Website Design & Development"
+			description="Professional web design and development services for small businesses. Custom websites built with modern technology - no monthly fees, full ownership."
 			openGraph={{
 				basic: {
-					title: "Clifton Creative Web Development & Design",
-					type: "A type.",
+					title: "Clifton Creative - Custom Website Design & Development",
+					type: "website",
 					image: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+				},
+				optional: {
+					description:
+						"Professional web design and development services for small businesses. Custom websites built with modern technology - no monthly fees, full ownership.",
 				},
 			}}
 			extend={{
@@ -26,8 +30,11 @@ import { SEO } from "astro-seo"
 						content:
 							"https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
 					},
-					{ name: "twitter:title", content: "Tinker Tailor Soldier Spy" },
-					{ name: "twitter:description", content: "Agent" },
+					{ name: "twitter:title", content: "Clifton Creative - Custom Website Design & Development" },
+					{
+						name: "twitter:description",
+						content: "Professional web design and development services for small businesses.",
+					},
 				],
 			}}
 		/>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cliftoncreative.dev/sitemap-index.xml

@@ -11,6 +11,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://cliftoncreative.dev', // Replace with your actual domain
   vite: {
     plugins: [tailwindcss()]
   },

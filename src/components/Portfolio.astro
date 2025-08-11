@@ -62,16 +62,6 @@ const blocks = [
 						const project = projectsByTitle[block.label]
 						const projectUrl = project ? `/projects/${project.data.slug}` : "#"
 
-						// Debug logging (remove in production)
-						if (block.label === "KRB Foundation") {
-							console.log("KRB Foundation block:", {
-								label: block.label,
-								project: project,
-								slug: project?.data.slug,
-								url: projectUrl,
-							})
-						}
-
 						return (
 							<li
 								class={`reveal-item opacity-0 transform translate-y-12 transition-all duration-700 ease-out w-full mb-16 break-inside-avoid overflow-hidden stagger-${index + 1}`}
